@@ -1,17 +1,33 @@
-# Editor configuration, see https://editorconfig.org
 root = true
 
 [*]
 charset = utf-8
-indent_style = space
-indent_size = 2
+end_of_line = lf
 insert_final_newline = true
+indent_style = tab
+indent_size = 2
 trim_trailing_whitespace = true
 
-[*.ts]
+# TypeScript & JavaScript
+[*.{ts,js}]
 quote_type = single
-ij_typescript_use_double_quotes = false
 
+# JSON & YAML (Angular config files, translations, etc.)
+[*.{json,yml,yaml}]
+indent_size = 2
+
+# HTML (Angular templates)
+[*.html]
+indent_size = 2
+
+# SCSS & CSS
+[*.{scss,css}]
+indent_size = 2
+
+# Markdown (docs, README, etc.)
 [*.md]
-max_line_length = off
 trim_trailing_whitespace = false
+
+# Git ignore files
+[*.gitignore]
+insert_final_newline = false
