@@ -1,5 +1,4 @@
 import { Component, inject } from '@angular/core';
-import { MockApiService } from '../../../../core/services/mock-api-service';
 import { JsonPipe } from '@angular/common';
 import { TransactionsService } from '../../services/transactions';
 
@@ -9,9 +8,9 @@ import { TransactionsService } from '../../services/transactions';
 		JsonPipe
 	],
 	template: `
-		<p>
+		<div class="text-preset-1">
 			transactions-view works!
-		</p>
+		</div>
 
 		<pre>{{ getTransactionsTest() | json }}</pre>
 	`,

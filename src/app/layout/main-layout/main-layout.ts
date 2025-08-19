@@ -10,7 +10,7 @@ import { Navigation } from '../navigation/navigation';
 	],
 	template: `
 		<div class="finance-app">
-			<div class="app-body">
+			<div class="app-body flex">
 				<app-navigation></app-navigation>
 				<main class="content-wrapper">
 					<router-outlet></router-outlet>
