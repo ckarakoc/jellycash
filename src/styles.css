@@ -1,1 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
 @import "tailwindcss";
+
+@theme {
+	--color-gray-900: #201F24;
+	--color-gray-800: #2E2D33;
+	--color-gray-700: #48474F;
+	--color-gray-600: #626066;
+	--color-gray-500: #696868;
+	--color-gray-400: #8C8B8F;
+	--color-gray-300: #B3B3B3;
+	--color-gray-200: #D9D9D9;
+	--color-gray-100: #F2F2F2;
+	--color-gray-50: #FBFBFB;
+
+	--color-beige-900: #4B4035;
+	--color-beige-800: #6B5E50;
+	--color-beige-700: #877463;
+	--color-beige-600: #A38D79;
+	--color-beige-500: #98908B;
+	--color-beige-400: #BDB2A7;
+	--color-beige-300: #D6CFC3;
+	--color-beige-200: #E9E2DA;
+	--color-beige-100: #F8F4F0;
+	--color-beige-50: #FBF9F7;
+
+	--color-jelly-green: #277C78;
+	--color-jelly-yellow: #F2CDAC;
+	--color-jelly-cyan: #82C9D7;
+	--color-jelly-navy: #626070;
+	--color-jelly-red: #C94736;
+	--color-jelly-purple: #826CB0;
+	--color-jelly-pink: #AF81BA;
+	--color-jelly-turquoise: #597C7C;
+	--color-jelly-brown: #93674F;
+	--color-jelly-magenta: #934F6F;
+	--color-jelly-blue: #3F82B2;
+	--color-jelly-stone: #97A0AC;
+	--color-jelly-army: #7F9161;
+	--color-jelly-gold: #CAB361;
+	--color-jelly-orange: #BE6C49;
+
+	/* Typography Scale */
+	--font-family-preset-1: 'Public Sans', sans-serif;
+	--font-size-preset-1: 32px;
+	--line-height-preset-1: 120%;
+	--letter-spacing-preset-1: 0px;
+	--font-weight-preset-1: 700;
+
+	--font-family-preset-2: 'Public Sans', sans-serif;
+	--font-size-preset-2: 20px;
+	--line-height-preset-2: 120%;
+	--letter-spacing-preset-2: 0px;
+	--font-weight-preset-2: 700;
+
+	--font-family-preset-3: 'Public Sans', sans-serif;
+	--font-size-preset-3: 16px;
+	--line-height-preset-3: 150%;
+	--letter-spacing-preset-3: 0px;
+	--font-weight-preset-3: 700;
+
+	--font-family-preset-4: 'Public Sans', sans-serif;
+	--font-size-preset-4: 14px;
+	--line-height-preset-4: 150%;
+	--letter-spacing-preset-4: 0px;
+	--font-weight-preset-4: 700;
+
+	--font-family-preset-5: 'Public Sans', sans-serif;
+	--font-size-preset-5: 12px;
+	--line-height-preset-5: 150%;
+	--letter-spacing-preset-5: 0px;
+	--font-weight-preset-5: 400;
+
+	--breakpoint-*: initial;
+	--breakpoint-tablet: 40rem;
+	--breakpoint-laptop: 64rem;
+	--breakpoint-desktop: 80rem;
+}
+
+@layer base {
+	.text-preset-1 {
+		font-family: var(--font-family-preset-1);
+		font-size: var(--font-size-preset-1);
+		line-height: var(--line-height-preset-1);
+		letter-spacing: var(--letter-spacing-preset-1);
+		font-weight: var(--font-weight-preset-1);
+	}
+
+	.text-preset-2 {
+		font-family: var(--font-family-preset-2);
+		font-size: var(--font-size-preset-2);
+		line-height: var(--line-height-preset-2);
+		letter-spacing: var(--letter-spacing-preset-2);
+		font-weight: var(--font-weight-preset-2);
+	}
+
+	.text-preset-3 {
+		font-family: var(--font-family-preset-3);
+		font-size: var(--font-size-preset-3);
+		line-height: var(--line-height-preset-3);
+		letter-spacing: var(--letter-spacing-preset-3);
+		font-weight: var(--font-weight-preset-3);
+	}
+
+	.text-preset-4 {
+		font-family: var(--font-family-preset-4);
+		font-size: var(--font-size-preset-4);
+		line-height: var(--line-height-preset-4);
+		letter-spacing: var(--letter-spacing-preset-4);
+		font-weight: var(--font-weight-preset-4);
+	}
+
+	.text-preset-5 {
+		font-family: var(--font-family-preset-5);
+		font-size: var(--font-size-preset-5);
+		line-height: var(--line-height-preset-5);
+		letter-spacing: var(--letter-spacing-preset-5);
+		font-weight: var(--font-weight-preset-5);
+	}
+}

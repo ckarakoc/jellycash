@@ -6,11 +6,11 @@ export const routes: Routes = [
 		path: '', component: MainLayout, children: [
 			{
 				path: '',
-				redirectTo: 'dashboard',
+				redirectTo: 'overview',
 				pathMatch: 'full'
 			},
 			{
-				path: 'dashboard',
+				path: 'overview',
 				loadChildren: () => import('./features/dashboard/dashboard.routes')
 			},
 			{
