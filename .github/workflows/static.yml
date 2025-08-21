@@ -32,7 +32,10 @@ jobs:
         run: npm ci
 
       - name: Build applications
-        run: npm run build:ghpages
+        run: npm run build:prod
+
+      - name: flatten
+        run: chmod +x ./scripts/flatten.sh && ./scripts/flatten.sh
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
