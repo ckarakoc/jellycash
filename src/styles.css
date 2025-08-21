@@ -42,45 +42,40 @@
 	--color-jelly-orange: #BE6C49;
 
 	/* Typography Scale */
-	--font-family-preset-1: 'Public Sans', sans-serif;
+	--font-family-preset-1: 'Public Sans';
 	--font-size-preset-1: 32px;
 	--line-height-preset-1: 120%;
 	--letter-spacing-preset-1: 0px;
 	--font-weight-preset-1: 700;
 
-	--font-family-preset-2: 'Public Sans', sans-serif;
+	--font-family-preset-2: 'Public Sans';
 	--font-size-preset-2: 20px;
 	--line-height-preset-2: 120%;
 	--letter-spacing-preset-2: 0px;
 	--font-weight-preset-2: 700;
 
-	--font-family-preset-3: 'Public Sans', sans-serif;
+	--font-family-preset-3: 'Public Sans';
 	--font-size-preset-3: 16px;
 	--line-height-preset-3: 150%;
 	--letter-spacing-preset-3: 0px;
 	--font-weight-preset-3: 700;
 
-	--font-family-preset-4: 'Public Sans', sans-serif;
+	--font-family-preset-4: 'Public Sans';
 	--font-size-preset-4: 14px;
 	--line-height-preset-4: 150%;
 	--letter-spacing-preset-4: 0px;
 	--font-weight-preset-4: 700;
 
-	--font-family-preset-5: 'Public Sans', sans-serif;
+	--font-family-preset-5: 'Public Sans';
 	--font-size-preset-5: 12px;
 	--line-height-preset-5: 150%;
 	--letter-spacing-preset-5: 0px;
 	--font-weight-preset-5: 400;
-
-	--breakpoint-*: initial;
-	--breakpoint-tablet: 40rem;
-	--breakpoint-laptop: 64rem;
-	--breakpoint-desktop: 80rem;
 }
 
 @layer base {
 	.text-preset-1 {
-		font-family: var(--font-family-preset-1);
+		font-family: var(--font-family-preset-1), sans-serif;
 		font-size: var(--font-size-preset-1);
 		line-height: var(--line-height-preset-1);
 		letter-spacing: var(--letter-spacing-preset-1);
@@ -88,7 +83,7 @@
 	}
 
 	.text-preset-2 {
-		font-family: var(--font-family-preset-2);
+		font-family: var(--font-family-preset-2), sans-serif;
 		font-size: var(--font-size-preset-2);
 		line-height: var(--line-height-preset-2);
 		letter-spacing: var(--letter-spacing-preset-2);
@@ -96,7 +91,7 @@
 	}
 
 	.text-preset-3 {
-		font-family: var(--font-family-preset-3);
+		font-family: var(--font-family-preset-3), sans-serif;
 		font-size: var(--font-size-preset-3);
 		line-height: var(--line-height-preset-3);
 		letter-spacing: var(--letter-spacing-preset-3);
@@ -104,7 +99,7 @@
 	}
 
 	.text-preset-4 {
-		font-family: var(--font-family-preset-4);
+		font-family: var(--font-family-preset-4), sans-serif;
 		font-size: var(--font-size-preset-4);
 		line-height: var(--line-height-preset-4);
 		letter-spacing: var(--letter-spacing-preset-4);
@@ -112,10 +107,17 @@
 	}
 
 	.text-preset-5 {
-		font-family: var(--font-family-preset-5);
+		font-family: var(--font-family-preset-5), sans-serif;
 		font-size: var(--font-size-preset-5);
 		line-height: var(--line-height-preset-5);
 		letter-spacing: var(--letter-spacing-preset-5);
 		font-weight: var(--font-weight-preset-5);
 	}
 }
+
+html, body {
+	min-height: 100vh;
+	height: auto;
+	margin: 0;
+}
+

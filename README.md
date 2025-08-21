@@ -1,8 +1,7 @@
 # 💶 JellyCash ️ 
 
 [//]: # (todo: write readme)
-[//]: # (todo: create actual database)
-[//]: # (todo: create docker compose file for postgresql database)
+[//]: # (todo: https://angular.dev/guide/drag-drop)
 
 Users are able to:
 
