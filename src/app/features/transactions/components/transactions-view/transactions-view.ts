@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { JsonPipe } from '@angular/common';
-import { TransactionsService } from '../../services/transactions';
 import { DeviceDetectorService } from 'ngx-device-detector';
+import { DataService } from '../../../../shared/services/data-service';
 
 @Component({
 	selector: 'app-transactions-view',
@@ -13,17 +13,11 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 			transactions-view works!
 		</div>
 		T:{{ deviceService.isTablet() }} M:{{ deviceService.isMobile() }} D:{{ deviceService.isTablet() }}
-		<pre class="whitespace-pre-wrap break-words overflow-x-auto">{{ getTransactionsTest() | json }}</pre>
+		<pre class="whitespace-pre-wrap break-words overflow-x-auto">{{ dataService.getTransactions() | json }}</pre>
 	`,
 	styles: ``
 })
 export class TransactionsView {
-
-	private ts = inject(TransactionsService);
+	dataService = inject(DataService);
 	deviceService = inject(DeviceDetectorService);
-
-	getTransactionsTest() {
-		return this.ts.getTransactions(0, 25);
-	}
-
 }

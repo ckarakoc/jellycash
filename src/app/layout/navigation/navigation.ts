@@ -2,7 +2,6 @@ import { Component, inject, signal } from '@angular/core';
 import { NavItem } from './nav-item/nav-item';
 import { IconService } from '../../shared/services/icon-service';
 import { MinimizeButton } from './minimize-button/minimize-button';
-import { DeviceDetectorService } from 'ngx-device-detector';
 
 @Component({
 	selector: 'app-navigation',
@@ -39,7 +38,5 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 })
 export class Navigation {
 	navbarCollapsed = signal<boolean>(false);
-
 	iconService = inject(IconService);
-	deviceService = inject(DeviceDetectorService);
 }

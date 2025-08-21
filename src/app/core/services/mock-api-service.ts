@@ -2,6 +2,11 @@ import { Injectable } from '@angular/core';
 import { PaginatedResponse } from '../../shared/models/pagination';
 import * as financeData from '../../../assets/data/data.json';
 
+export type JsonPrimitive = string | number | boolean | null;
+export type JsonObject = { [key: string]: JsonValue };
+export type JsonArray = JsonValue[];
+export type JsonValue = JsonPrimitive | JsonObject | JsonArray;
+
 @Injectable({
 	providedIn: 'root'
 })

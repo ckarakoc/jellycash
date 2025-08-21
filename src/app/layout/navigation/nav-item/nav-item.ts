@@ -1,9 +1,8 @@
-import { Component, inject, input, Signal } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { ReplacePipe } from '../../../shared/pipes/replace-pipe';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { TitleCasePipe } from '@angular/common';
 import { IconService } from '../../../shared/services/icon-service';
-import { DeviceDetectorService } from 'ngx-device-detector';
 
 @Component({
   selector: 'nav-item',
@@ -14,7 +13,7 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 		RouterLink
 	],
   template: `
-		<div class="flex flex-col items-center py-3 px-6 fill-gray-300 hover:text-white hover:fill-white hover:cursor-pointer sm:py-4 sm:px-10 lg:flex-row lg:gap-5 lg:border-l-4 lg:border-l-gray-900"
+		<div class="flex flex-col items-center py-3 px-6 fill-gray-300 hover:text-white hover:fill-white hover:cursor-pointer sm:py-4 sm:px-4 lg:w-full lg:flex-row lg:gap-5 lg:border-l-4 lg:border-l-gray-900"
 				 [routerLink]="link()"
 				 routerLinkActive="activate"
 		>
@@ -64,5 +63,4 @@ export class NavItem {
 	navbarCollapsed = input.required<boolean>();
 
 	iconService = inject(IconService);
-	deviceService = inject(DeviceDetectorService);
 }
