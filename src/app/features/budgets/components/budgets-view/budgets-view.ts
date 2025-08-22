@@ -8,6 +8,7 @@ import { JsonPipe } from '@angular/common';
 		JsonPipe
 	],
   template: `
+		<!-- todo: create chart from chart.js (https://www.chartjs.org/docs/latest/charts/doughnut.html)  (with builder pattern: https://refactoring.guru/design-patterns/builder/typescript/example) -->
     <p>
       budgets-view works!
     </p>

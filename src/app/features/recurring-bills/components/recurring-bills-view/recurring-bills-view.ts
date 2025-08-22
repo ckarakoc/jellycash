@@ -232,7 +232,6 @@ type SortType = 'latest' | 'oldest' | 'atoz' | 'ztoa' | 'highest' | 'lowest';
 
 			</div>
 
-
 			<!-- <pre class="overflow-x-auto whitespace-pre-wrap break-words"> -->
 			<!-- {{ printJson() | json }} -->
 			<!-- </pre> -->

@@ -13,6 +13,9 @@ import { Navigation } from '../navigation/navigation';
 			<div class="app-body flex flex-col flex-1 lg:flex-row-reverse bg-beige-100">
 				<main class="content-wrapper flex-1 overflow-y-auto overflow-x-hidden">
 					<router-outlet></router-outlet>
+					<footer class="fixed bottom-0 right-10">
+						<a href="https://www.flaticon.com/free-icons/user" title="user icons">User icons created by Freepik - Flaticon</a>
+					</footer>
 				</main>
 				<app-navigation class="sticky bottom-0 left-0 right-0 shrink-0 lg:flex min-w-80"></app-navigation>
 			</div>
