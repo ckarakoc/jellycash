@@ -37,6 +37,7 @@ import { IconService } from '../../../shared/services/icon-service';
 			border-bottom-color: var(--color-jelly-green);
 			border-bottom-width: 8px;
 			border-bottom-style: solid;
+			color: var(--color-gray-900);
 		}
 
 		/* Large screens (lg: 1024px and up) */

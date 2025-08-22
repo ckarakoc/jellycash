@@ -10,7 +10,9 @@ import { MinimizeButton } from './minimize-button/minimize-button';
 		MinimizeButton
 	],
 	template: `
-			<nav class="bg-gray-900 text-gray-300 text-preset-3 rounded-t-2xl lg:rounded-r-2xl lg:rounded-tl-none lg:flex lg:justify-between lg:min-h-screen lg:h-full lg:flex-col">
+			<nav class="bg-gray-900 text-gray-300 text-preset-3 rounded-t-2xl lg:rounded-r-2xl lg:rounded-tl-none lg:flex lg:justify-between lg:min-h-screen lg:h-full lg:flex-col"
+					 [class.w-full]="!navbarCollapsed()"
+			>
 				<div class="flex flex-col gap-10">
 					<!-- LOGO (Only Desktop) -->
 					<div class="hidden p-4 mt-6 fill-white lg:block"

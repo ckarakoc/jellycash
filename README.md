@@ -2,6 +2,7 @@
 
 [//]: # (todo: write readme)
 [//]: # (todo: https://angular.dev/guide/drag-drop)
+[//]: # (todo: grab data from API backend)
 
 Users are able to:
 

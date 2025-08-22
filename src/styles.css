@@ -71,6 +71,25 @@
 	--line-height-preset-5: 150%;
 	--letter-spacing-preset-5: 0px;
 	--font-weight-preset-5: 400;
+
+	--animate-fade-in: fadeIn 0.3s ease-in-out;
+	--animate-fade-out: fadeOut 0.3s ease-in-out;
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
+	}
+	@keyframes fadeOut {
+		from {
+			opacity: 1;
+		}
+		to {
+			opacity: 0;
+		}
+	}
 }
 
 @layer base {
@@ -119,5 +138,6 @@ html, body {
 	min-height: 100vh;
 	height: auto;
 	margin: 0;
+	font-family: 'Public Sans', sans-serif;
 }
 
