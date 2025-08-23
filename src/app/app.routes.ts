@@ -1,12 +1,17 @@
 import { Routes } from '@angular/router';
 import { MainLayout } from './layout/main-layout/main-layout';
+import { AuthLayout } from './layout/auth-layout/auth-layout';
+import { authGuard } from './core/guards/auth-guard';
 
 export const routes: Routes = [
 	{
-		path: '', component: MainLayout, children: [
+		path: '',
+		component: MainLayout,
+		canActivate: [authGuard],
+		children: [
 			{
 				path: '',
-				redirectTo: 'overview',
+				redirectTo: 'auth',
 				pathMatch: 'full'
 			},
 			{
@@ -30,5 +35,11 @@ export const routes: Routes = [
 				loadChildren: () => import('./features/pots/pots.routes')
 			}
 		]
+	},
+	{
+		path: 'auth',
+		component: AuthLayout,
+		loadChildren: () => import('./features/auth/auth.routes')
+		// canActivate: [loggedInGuard]
 	}
 ];

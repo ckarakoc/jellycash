@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { DataService } from '../../../../shared/services/data-service';
-import { CurrencyPipe, NgStyle, PercentPipe } from '@angular/common';
+import { CurrencyPipe, NgStyle } from '@angular/common';
 import { CdkDialogDataExampleDialog } from '../../../pots/components/pots-view/pots-view';
 import { Dialog } from '@angular/cdk/dialog';
 import { PaginatedResponse } from '../../../../shared/models/pagination';
@@ -9,7 +9,6 @@ import { PaginatedResponse } from '../../../../shared/models/pagination';
   selector: 'app-budgets-view',
 	imports: [
 		CurrencyPipe,
-		PercentPipe,
 		NgStyle
 	],
   template: `
