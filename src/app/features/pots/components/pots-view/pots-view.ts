@@ -95,16 +95,9 @@ export class PotsView {
 
 	openDialog() {
 		this.dialog.open(CdkDialogDataExampleDialog, {
-			minWidth: '300px',
-			data: {
-				animal: 'panda',
-			},
+			minWidth: '300px'
 		});
 	}
-}
-
-export interface DialogData {
-	animal: 'panda' | 'unicorn' | 'lion';
 }
 
 @Component({
@@ -113,5 +106,4 @@ export interface DialogData {
 	styles: ``,
 })
 export class CdkDialogDataExampleDialog {
-	data = inject(DIALOG_DATA);
 }
