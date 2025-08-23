@@ -9,9 +9,7 @@ import { DataService } from '../../../../shared/services/data-service';
 		JsonPipe
 	],
 	template: `
-		<div class="text-preset-1">
-			transactions-view works!
-		</div>
+
 		T:{{ deviceService.isTablet() }} M:{{ deviceService.isMobile() }} D:{{ deviceService.isTablet() }}
 		<pre class="whitespace-pre-wrap break-words overflow-x-auto">{{ dataService.getTransactions() | json }}</pre>
 	`,
