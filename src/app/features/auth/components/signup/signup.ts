@@ -4,7 +4,7 @@ import { SignUpValidators } from '../../validators/SignUpValidators';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../../core/services/auth-service';
 import { RegisterUser } from '../../../../core/models/user';
-import { Subject, takeUntil } from 'rxjs';
+import { HotToastService } from '@ngxpert/hot-toast';
 
 //todo: error validations and error messages.
 
@@ -134,9 +134,9 @@ import { Subject, takeUntil } from 'rxjs';
 	`
 })
 export class Signup implements OnDestroy {
-	private destroy$ = new Subject<void>();
 	private fb = inject(FormBuilder);
 	private auth = inject(AuthService);
+	private toast = inject(HotToastService);
 	private router = inject(Router);
 
 	signupForm = this.fb.group({
@@ -155,23 +155,18 @@ export class Signup implements OnDestroy {
 			firstName: first,
 			lastName: second
 		} as RegisterUser;
-		// this.auth.register(dto)
-		// 	.pipe(takeUntil(this.destroy$))
-		// 	.subscribe({
-		// 		next: (res: JwtResponse) => {
-		// 			console.log('Access Token', res.accessToken);
-		// 			console.log('Refresh Token', res.refreshToken);
-		// 			this.router.navigate(['/auth/login']);
-		// 		},
-		// 		error: (_) => {
-		// 			this.signupForm.reset();
-		// 		}
-		// 	});
+		this.auth.register(dto)
+			.subscribe({
+				next: _ => {
+					this.toast.success('User registered successfully!', { duration: 1000 });
+					this.router.navigate(['/']);
+				},
+				error: (_) => this.signupForm.reset()
+
+			});
 	}
 
 	ngOnDestroy() {
 		this.signupForm.reset();
-		this.destroy$.next();
-		this.destroy$.complete();
 	}
 }
