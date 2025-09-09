@@ -7,7 +7,7 @@ import { environment } from '../../../environments/environment';
 })
 export class ApiService {
 	// todo: Base HTTP client with common headers
-	private readonly baseUrl = environment.apiUrl;
+	private readonly baseUrl = environment.backendUrl;
 
 	private http = inject(HttpClient);
 

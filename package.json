@@ -18,6 +18,8 @@
     "@angular/forms": "^20.1.0",
     "@angular/platform-browser": "^20.1.0",
     "@angular/router": "^20.1.0",
+    "@ngneat/overview": "6.1.1",
+    "@ngxpert/hot-toast": "^5.1.1",
     "@tailwindcss/postcss": "^4.1.12",
     "ngx-device-detector": "^10.1.0",
     "postcss": "^8.5.6",

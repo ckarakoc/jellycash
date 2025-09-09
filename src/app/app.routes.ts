@@ -40,6 +40,6 @@ export const routes: Routes = [
 		path: 'auth',
 		component: AuthLayout,
 		loadChildren: () => import('./features/auth/auth.routes')
-		// canActivate: [loggedInGuard]
-	}
+	},
+	{ path: '**', redirectTo: 'auth' }
 ];

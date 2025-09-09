@@ -2,6 +2,9 @@ import { Component, inject, OnDestroy, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { SignUpValidators } from '../../validators/SignUpValidators';
+import { AuthService } from '../../../../core/services/auth-service';
+import { HotToastService } from '@ngxpert/hot-toast';
+import { User } from '../../../../core/models/user';
 
 @Component({
 	selector: 'app-login',
@@ -71,6 +74,8 @@ import { SignUpValidators } from '../../validators/SignUpValidators';
 })
 export class Login implements OnDestroy {
 	private fb = inject(FormBuilder);
+	private auth = inject(AuthService);
+	private toast = inject(HotToastService);
 
 	loginForm = this.fb.group({
 		email: ['', [Validators.required, Validators.email]],
@@ -84,7 +89,15 @@ export class Login implements OnDestroy {
 	}
 
 	onSubmit() {
-		console.log('submitted');
+		console.log('auth:' + this.auth.isAuthenticated());
+		this.auth.login({ email: this.loginForm.value.email ?? '', password: this.loginForm.value.password ?? '' })
+			.subscribe({
+				next: () => {
+					this.toast.success('Login successful');
+					console.log('auth:' + this.auth.isAuthenticated());
+					console.log('user:' + JSON.stringify(this.auth.currentUser()));
+				}
+			});
 	}
 
 	ngOnDestroy() {

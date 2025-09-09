@@ -1,7 +1,10 @@
 import { Component, inject, OnDestroy } from '@angular/core';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { SignUpValidators } from '../../validators/SignUpValidators';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '../../../../core/services/auth-service';
+import { RegisterUser } from '../../../../core/models/user';
+import { Subject, takeUntil } from 'rxjs';
 
 //todo: error validations and error messages.
 
@@ -130,9 +133,11 @@ import { RouterLink } from '@angular/router';
 		}
 	`
 })
-export class Signup implements OnDestroy{
-
+export class Signup implements OnDestroy {
+	private destroy$ = new Subject<void>();
 	private fb = inject(FormBuilder);
+	private auth = inject(AuthService);
+	private router = inject(Router);
 
 	signupForm = this.fb.group({
 		name: ['', [Validators.required]],
@@ -142,10 +147,31 @@ export class Signup implements OnDestroy{
 	}, { validators: [SignUpValidators.passwordsMatch] });
 
 	onSubmit() {
-
+		let [first, second] = this.signupForm.value.name?.split(/ (.+)/) ?? [];
+		const dto = {
+			email: this.signupForm.value.email,
+			password: this.signupForm.value.password,
+			confirmPassword: this.signupForm.value.confirmPassword,
+			firstName: first,
+			lastName: second
+		} as RegisterUser;
+		// this.auth.register(dto)
+		// 	.pipe(takeUntil(this.destroy$))
+		// 	.subscribe({
+		// 		next: (res: JwtResponse) => {
+		// 			console.log('Access Token', res.accessToken);
+		// 			console.log('Refresh Token', res.refreshToken);
+		// 			this.router.navigate(['/auth/login']);
+		// 		},
+		// 		error: (_) => {
+		// 			this.signupForm.reset();
+		// 		}
+		// 	});
 	}
 
 	ngOnDestroy() {
 		this.signupForm.reset();
+		this.destroy$.next();
+		this.destroy$.complete();
 	}
 }
