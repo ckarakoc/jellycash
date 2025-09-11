@@ -2,28 +2,18 @@ import { computed, inject, Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { RegisterUser, User } from '../models/user';
 import { environment } from '../../../environments/environment';
-import { BehaviorSubject, catchError, filter, firstValueFrom, map, Observable, of, switchMap, take, tap } from 'rxjs';
+import { catchError, map, Observable, of, switchMap, tap } from 'rxjs';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class AuthService {
-	http = inject(HttpClient);
+	private http = inject(HttpClient);
 	private readonly baseUrl = environment.backendUrl;
 
 	private _currentUser = signal<User | null>(null);
-	private _initialized = signal<boolean>(false);
-
 	public readonly currentUser = this._currentUser.asReadonly();
-	public readonly isAuthenticated = computed(() => this._currentUser() !== null);
-	public readonly initialized = this._initialized.asReadonly();
-
-	// Observable that completes when auth state is initialized
-	public readonly initialized$ = new BehaviorSubject<boolean>(false);
-
-	constructor() {
-		this.initializeAuthState();
-	}
+	public isAuthenticated = computed(() => this._currentUser() !== null);
 
 	register(dto: RegisterUser): Observable<User> {
 		return this.http.post<void>(`${ this.baseUrl }/auth/register`, dto, { withCredentials: true })
@@ -55,10 +45,14 @@ export class AuthService {
 	}
 
 	logout(): Observable<void> {
-		// TODO: logout button
+		console.log('logging out...')
 		return this.http.post<void>(`${ this.baseUrl }/auth/logout`, {}, { withCredentials: true })
 			.pipe(
-				tap(() => this.clearAuthState())
+				tap(() => this.clearAuthState()),
+				catchError(_ => {
+					this._currentUser.set(null);
+					return of();
+				})
 			);
 	}
 
@@ -68,30 +62,5 @@ export class AuthService {
 
 	clearAuthState(): void {
 		this._currentUser.set(null);
-	}
-
-	async waitForInitialization(): Promise<void> {
-		if (this._initialized()) {
-			return Promise.resolve();
-		}
-		return firstValueFrom(this.initialized$.pipe(filter(value => value), take(1))).then();
-	}
-
-	private initializeAuthState() {
-		console.log('Initializing Auth state...');
-		this.me()
-			.pipe(
-				catchError(err => {
-					console.error('error', err);
-					return of(null);
-				})
-			)
-			.subscribe(user => {
-				this._currentUser.set(user);
-				this._initialized.set(true);
-				this.initialized$.next(true);
-				this.initialized$.complete();
-				console.log('Auth state initialized.');
-			});
 	}
 }

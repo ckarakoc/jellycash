@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { Login } from './components/login/login';
 import { Signup } from './components/signup/signup';
+import { Logout } from './components/logout/logout';
 
 export default [
 	{
@@ -15,5 +16,9 @@ export default [
 	{
 		path: 'signup',
 		component: Signup
+	},
+	{
+		path: 'logout',
+		component: Logout
 	}
 ] satisfies Routes;

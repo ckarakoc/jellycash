@@ -1,22 +1,15 @@
 import { HttpErrorResponse, HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
-import { Router } from '@angular/router';
 import { catchError, throwError } from 'rxjs';
+import { AuthService } from '../services/auth-service';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
-	const router = inject(Router);
+	const authService = inject(AuthService);
 
-	const authReq = req.clone({ withCredentials: true });
-
-	return next(authReq).pipe(
+	return next(req).pipe(
 		catchError((err: HttpErrorResponse) => {
 			if (err.status === 401) { // unauthorized
-				const currentUrl = router.url;
-				router.navigate(['/auth/login'], {
-					queryParams: { returnUrl: currentUrl },
-					replaceUrl: true
-				});
-				console.warn('Session expired, redirecting to login');
+				authService.clearAuthState();
 			}
 			return throwError(() => err);
 		})

@@ -1,27 +1,31 @@
 import { HttpErrorResponse, HttpInterceptorFn } from '@angular/common/http';
 import { HotToastService } from '@ngxpert/hot-toast';
 import { inject } from '@angular/core';
-import { finalize, tap } from 'rxjs';
+import { catchError, finalize, tap, throwError } from 'rxjs';
 
+// TODO: this is a global error interceptor. Need to make it more specific.
 export const errorInterceptor: HttpInterceptorFn = (req, next) => {
 	const toast = inject(HotToastService);
 	return next(req).pipe(
-		//todo: toast.observe(...) doesn't work... why? Also giving the id inside toast.error(..., { id: 'register' } ) doesn't work. Inspector Gagdet it...
+		// TODO: toast.observe(...) doesn't work... why? Also giving the id inside toast.error(..., { id: 'register' } ) doesn't work. Inspector Gagdet it...
+		// TODO: create a global toast error handler. Need to look into the library. For now, this is meh...
 		tap({
 			next: () => {
 				toast.loading('Loading...', { id: 'global-error-toast' });
 			},
 			error: (err: HttpErrorResponse) => {
-				console.log(`Intercepted Error:`);
-				console.log(err);
+				console.error('Intercepted error: ', err);
 				toast.close('global-error-toast');
 				toast.error(`Status Code ${ err.status } : ${ err.error?.error }`);
+				throwError(() => err);
 			},
 			complete: () => {
 				toast.close('global-error-toast');
 			}
 		}),
-		//catchError((err) => throwError(() => err)), // todo: no need?
+		catchError((err) => {
+			return throwError(() => err);
+		}),
 		finalize(() => {
 			toast.close('global-error-toast');
 		})

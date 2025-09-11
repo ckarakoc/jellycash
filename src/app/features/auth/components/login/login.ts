@@ -90,7 +90,6 @@ export class Login implements OnDestroy {
 	}
 
 	onSubmit() {
-		console.log('auth:' + this.auth.isAuthenticated());
 		this.auth.login({ email: this.loginForm.value.email ?? '', password: this.loginForm.value.password ?? '' })
 			.subscribe({
 				next: () => {
